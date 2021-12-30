@@ -28,7 +28,7 @@ ROTA                           |     HTTP(Verbo)   |    Request            |    
 /api/image-news/{id}           |       DELETE      |     JSON, int(id)     |    boolean  | Delete image by param    |
 /api/image-news/{param}        |       PUT         |     JSON, param       |     JSON    | Update image by param    |
 /api/image-news/news/{news_id} |       GET         |      int(news_id)     |     JSON    | List image by news id    |
-/api/image-news/news/{news_id} |       DELETE      |  JSON, int(author_id) |    boolean  | Delete image by news id  |
+/api/image-news/news/{news_id} |       DELETE      |  JSON, int(news_id)   |    boolean  | Delete image by news id  |
 
 # Lumen PHP Framework
 
