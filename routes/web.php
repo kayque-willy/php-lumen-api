@@ -26,6 +26,10 @@ $router->get('/', function () use ($router) {
 
 // --------------------------- ROTAS AUTOR ---------------------------
 $router->group(['prefix' => 'api', 'namespace' => 'Author', 'as' => Author::class], function () use ($router) {
+    // Index
+    $router->get('/', [
+        'uses' => 'AuthorController@index'
+    ]);
     // Criar autor
     $router->post('/author', [
         'uses' => 'AuthorController@create'

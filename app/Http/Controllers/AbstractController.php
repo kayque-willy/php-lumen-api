@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\OrderByHelper;
 use App\Services\ServiceInterface;
 use Exception;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,6 +20,11 @@ class AbstractController extends BaseController implements ControllerInterface
     public function __construct(ServiceInterface $service)
     {
         $this->service = $service;
+    }
+
+    public function index()
+    {
+        return response()->make('<h1>Exemplo de API PHP REST</h1><span>PHP Lumen, Eloquent e PostgreSQL.</span>');
     }
 
     public function create(Request $request): JsonResponse
