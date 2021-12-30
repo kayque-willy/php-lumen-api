@@ -1,3 +1,35 @@
+# Exemplo de API PHP Restful
+PHP Lumen, Enloquent e PostgreSQL.
+
+## Development server
+
+Navigate to `http://localhost:8000/api`. The app will automatically reload if you change any of the source files.
+
+## API REQUESTS: 
+
+ROTA                           |     HTTP(Verbo)   |    Request            |    Return   |    Description           |
+------------------------------ | ----------------- | --------------------- | ----------- | ------------------------ |
+/api/                          |       GET         |        -              |     HTML    | API index                |
+/api/author                    |       GET         |        -              |     JSON    | List author              |
+/api/author                    |       POST        |       JSON            |     JSON    | Create author            |
+/api/author/{id}               |       GET         |      int(id)          |     JSON    | Get author by id         |
+/api/author/{param}            |       PUT         |    JSON, param        |     JSON    | Update author by param   |
+/api/author/{id}               |       DELETE      |   JSON, int(id)       |    boolean  | Delete author by id      |
+/api/news                      |       GET         |          -            |     JSON    | List news                |
+/api/news                      |       POST        |       JSON            |     JSON    | Create news              |
+/api/news/{param}              |       GET         |       param           |     JSON    | List news by param       |
+/api/news/{param}              |       PUT         |    JSON, param        |     JSON    | Update news by param     |
+/api/news/{param}              |       DELETE      |   JSON, param         |    boolean  | Delete news by param     |
+/api/news/author/{author_id}   |       GET         | JSON, int(author_id)  |     JSON    | Get news by author id    |
+/api/news/author/{author_id}   |       DELETE      | JSON, int(author_id)  |    boolean  | Delete news by author id |
+/api/image-news                |       GET         |          -            |     JSON    | List image news          |
+/api/image-news                |       POST        |        JSON           |     JSON    | Create image news        |
+/api/image-news/{id}           |       GET         |     JSON, int(id)     |     JSON    | Get image  by  id        |
+/api/image-news/{id}           |       DELETE      |     JSON, int(id)     |    boolean  | Delete image by param    |
+/api/image-news/{param}        |       PUT         |     JSON, param       |     JSON    | Update image by param    |
+/api/image-news/news/{news_id} |       GET         |      int(news_id)     |     JSON    | List image by news id    |
+/api/image-news/news/{news_id} |       DELETE      |  JSON, int(author_id) |    boolean  | Delete image by news id  |
+
 # Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
