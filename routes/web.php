@@ -18,6 +18,8 @@ use App\Models\Author;
 use App\Models\ImageNews;
 use App\Models\News;
 
+// --------------------------- ROTA RAIZ DA API ---------------------------
+// $router->get('/nome-api', function () use ($router) {
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
@@ -37,12 +39,8 @@ $router->group(['prefix' => 'api', 'namespace' => 'Author', 'as' => Author::clas
     $router->get('/author/{id}', [
         'uses' => 'AuthorController@findOneBy'
     ]);
-    // Atualizar autor
+    // Atualizar autor por parametro
     $router->put('/author/{param}', [
-        'uses' => 'AuthorController@editBy'
-        //    'middleware' => 'ValidateDataMiddleware'
-    ]);
-    $router->patch('/author/{param}', [
         'uses' => 'AuthorController@editBy'
         //    'middleware' => 'ValidateDataMiddleware'
     ]);
@@ -73,10 +71,6 @@ $router->group(['prefix' => 'api', 'namespace' => 'News', 'as' => News::class], 
     ]);
     // Atualizar noticia
     $router->put('/news/{param}', [
-        'uses' => 'NewsController@editBy'
-        // 'middleware' => 'ValidateDataMiddleware'
-    ]);
-    $router->patch('/news/{param}', [
         'uses' => 'NewsController@editBy'
         // 'middleware' => 'ValidateDataMiddleware'
     ]);
@@ -111,10 +105,6 @@ $router->group(['prefix' => 'api', 'namespace' => 'ImageNews', 'as' => ImageNews
     ]);
     // Atualizar imagem
     $router->put('/image-news/{param}', [
-        'uses' => 'ImageNewsController@editBy'
-        // 'middleware' => 'ValidateDataMiddleware'
-    ]);
-    $router->patch('/image-news/{param}', [
         'uses' => 'ImageNewsController@editBy'
         // 'middleware' => 'ValidateDataMiddleware'
     ]);

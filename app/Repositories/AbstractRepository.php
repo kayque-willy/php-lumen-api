@@ -21,32 +21,27 @@ abstract class AbstractRepository implements RepositoryInterface
     public function findAll(int $limit = 10, array $orderBy = []): array
     {
         $results = $this->model::query();
+        
+        // Tratamento do order by
+        $results = $this->resolveOrderBy($orderBy, $results);
 
-        foreach ($orderBy as $key => $value) {
-            if (strstr($key, '-')) {
-                $key = substr($key, 1);
-            }
-            $results->orderBy($key, $value);
-        }
+        // Retorna os resultados com paginação
         return $results
             ->paginate($limit)
             ->appends([
                 'order_by' => implode(',', array_keys($orderBy)),
                 'limit' => $limit
-            ])
-            ->toArray();
+            ])->toArray();
     }
 
     public function findOneBy(int $id): array
     {
-        return $this->model::findOrFail($id)
-            ->toArray();
+        return $this->model::findOrFail($id)->toArray();
     }
 
     public function editBy(string $param, array $data): bool
     {
-        $result = $this->model::find($param)
-            ->update($data);
+        $result = $this->model::find($param)->update($data);
         return $result ? true : false;
     }
 
@@ -63,26 +58,32 @@ abstract class AbstractRepository implements RepositoryInterface
     ): array {
         $results = $this->model::where($searchFields[0], 'like', '%' . $string . '%');
 
+        // Adição dos demais campos na busca
         if (count($searchFields) > 1) {
             foreach ($searchFields as $field) {
                 $results->orWhere($field, 'like', '%' . $string . '%');
             }
         }
-
-        foreach ($orderBy as $key => $value) {
-            if (strstr($key, '-')) {
-                $key = substr($key, 1);
-            }
-
-            $results->orderBy($key, $value);
-        }
-
+        
+        // Tratamento do order by
+        $results = $this->resolveOrderBy($orderBy, $results);
+        
+        // Retorna os resultados com paginação
         return $results->paginate($limit)
             ->appends([
                 'order_by' => implode(',', array_keys($orderBy)),
                 'q' => $string,
                 'limit' => $limit
-            ])
-            ->toArray();
+            ])->toArray();
+    }
+
+    private function resolveOrderBy($orderBy, $results){
+        foreach ($orderBy as $key => $value) {
+            if (strstr($key, '-')) {
+                $key = substr($key, 1);
+            }
+            $results->orderBy($key, $value);
+        }
+        return $results;
     }
 }

@@ -8,9 +8,13 @@
 
 > $  composer require flipbox/lumen-generator //--------------// Adiciona o pacote de generators ao lumen.
 
-> $  php artisan make:model name-model --migration //--------------// Cria a model e a migration.
+> $  composer require maxsky/lumen-app-key-generator //--------------// Adiciona o pacote de app-key generator do lumen
+
+> $  php artisan key:generate //--------------// Gera a app-key do lumen
 
 ---------------------------------------------------------------------------------------------------------
+
+> $  php artisan make:model name-model --migration //--------------// Cria a model e a migration.
 
 > $  php artisan make:migration name-model //--------------// Cria a migration de acordo com o nome da tabela
 
@@ -21,12 +25,6 @@
 > $  php artisan migrate:reset //--------------// Desfaz todas as migrations
 
 > $  php artisan migrate:rollback //--------------// Desfaz a ultima migration
-
----------------------------------------------------------------------------------------------------------
-
-> $  composer require maxsky/lumen-app-key-generator //--------------// Adiciona o pacote de app-key generator do lumen
-
-> $  php artisan key:generate //--------------// Gera a app-key do lumen
 
 ---------------------------------------------------------------------------------------------------------
 
