@@ -6,25 +6,20 @@ use App\Repositories\AbstractRepository;
 
 class NewsRepository extends AbstractRepository
 {
-    // Metodos especificos do NewsRepository
+    // ---------------------- Métodos especificos do NewsRepository ----------------------
     public function findByAuthor(int $authorId, int $limit = 10, array $orderBy = []): array
     {
         $results = $this->model::where('author_id', $authorId);
 
-        foreach ($orderBy as $key => $value) {
-            if (strstr($key, '-')) {
-                $key = substr($key, 1);
-            }
+        // Tratamento do order by
+        $results = $this->resolveOrderBy($orderBy, $results);
 
-            $results->orderBy($key, $value);
-        }
-
+        // Retorna os resultados com paginação
         return $results->paginate($limit)
             ->appends([
                 'order_by' => implode(',', array_keys($orderBy)),
                 'limit' => $limit
-            ])
-            ->toArray();
+            ])->toArray();
     }
 
     public function findBy(string $param): array
@@ -36,7 +31,7 @@ class NewsRepository extends AbstractRepository
         } else {
             $news = $query->where('slug', 'ilike', '%' . $param . '%')->get();
         }
-
+        
         return $news->toArray();
     }
 
@@ -55,16 +50,14 @@ class NewsRepository extends AbstractRepository
         if (is_numeric($param)) {
             $news = $this->model::destroy($param);
         } else {
-            $news = $this->model::where('slug', $param)
-                ->delete();
+            $news = $this->model::where('slug', $param)->delete();
         }
         return $news ? true : false;
     }
 
     public function deleteByAuthor(int $authorId): bool
     {
-        $news = $this->model::where('author_id', $authorId)
-            ->delete();
+        $news = $this->model::where('author_id', $authorId)->delete();
         return $news ? true : false;
     }
 }

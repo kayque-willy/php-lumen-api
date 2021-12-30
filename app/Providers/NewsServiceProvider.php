@@ -15,7 +15,6 @@ class NewsServiceProvider extends ServiceProvider
         // -------- INJEÇÃO DE DEPENDENCIA DO SERVICE  --------
         // Aqui é definido o tipo do serviço para ser injetado.
         $this->app->bind(NewsService::class, function ($app) {
-            // Injeção de dependencia
             // A injeção das dependencias:
             //     - NewsService.php
             //     - NewsRepository.php

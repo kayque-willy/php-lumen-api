@@ -77,7 +77,7 @@ abstract class AbstractRepository implements RepositoryInterface
             ])->toArray();
     }
 
-    private function resolveOrderBy($orderBy, $results){
+    protected function resolveOrderBy($orderBy, $results){
         foreach ($orderBy as $key => $value) {
             if (strstr($key, '-')) {
                 $key = substr($key, 1);
