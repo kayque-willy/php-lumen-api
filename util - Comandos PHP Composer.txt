@@ -28,6 +28,8 @@
 
 ---------------------------------------------------------------------------------------------------------
 
+> $  php artisan serve //--------------// Executa o projeto direto no servidor de deploy do PHP, dessa forma não precisa executar o wamp
+
 > $  php -S localhost:8000 -t public //--------------// Executa o projeto direto no servidor de deploy do PHP, dessa forma não precisa executar o wamp
 
 ---------------------------------------------------------------------------------------------------------
