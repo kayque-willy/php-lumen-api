@@ -1,10 +1,10 @@
----------------------------------------------------------------------------------------------------------
+-----------------------------------------------CRIAÇÃO DO PROJETO--------------------------------------------------
 
 > $  composer init //--------------// Inicia o projeto Composer, deve ser criado na raiz da pastas de todos os projetos "/www/..."
 
 > $  composer create-project --prefer-dist laravel/lumen name-project //--------------// Cria o projeto lumen, isso cria uma subpasta com o nome do projeto "/www/name-project"
 
----------------------------------------------------------------------------------------------------------
+-------------------------------------------INSTALAÇÃO DE DEPENDENCIAS--------------------------------------------------
 
 > $  composer require flipbox/lumen-generator //--------------// Adiciona o pacote de generators ao lumen.
 
@@ -12,7 +12,7 @@
 
 > $  php artisan key:generate //--------------// Gera a app-key do lumen
 
----------------------------------------------------------------------------------------------------------
+--------------------------------------------------ARTISAN (ORM)---------------------------------------------------
 
 > $  php artisan make:model name-model --migration //--------------// Cria a model e a migration.
 
@@ -26,7 +26,7 @@
 
 > $  php artisan migrate:rollback //--------------// Desfaz a ultima migration
 
----------------------------------------------------------------------------------------------------------
+------------------------------------------------------EXECUÇÃO---------------------------------------------------
 
 > $  php artisan serve //--------------// Executa o projeto direto no servidor de deploy do PHP, dessa forma não precisa executar o wamp
 
